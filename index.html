@@ -18,11 +18,11 @@
       <main class="content">
         <form class="content__form" action="">
           <div class="div-cep">
-            <label class="label-cep"> CEP: <input class="input-cep" onblur="buscaCep(value)" type="text" placeholder="00000-000" /></label>
+            <label class="label-cep"> CEP: <input class="input-cep" onblur="buscaCep()" onfocus="cepFocused()" type="text" placeholder="00000-000" /><img class="check-icon invisible" src="./assets/img/check.svg"/></label>
               <svg class="loading invisible" height="30" width="30">
                 <circle cx="15" cy="15" r="10" stroke="black" stroke-width="3" fill="transparent" />
               </svg>
-            <span class="span-invalid invisible">CEP Inválido</span>
+            <span class="span-invalid invisible">CEP Inválido <img src="assets/img/not-found.svg" /></span>
           </div>
           <div class="div-public-place">
             <label class="label-public-place"> Logradouro: <input class="input-public-place" type="text" readonly /></label>
@@ -39,7 +39,7 @@
         </form>
       </main>
       <footer>
-        <p>Github: @henrfarias &copy; 2020.</p>
+       <a href="https://github.com/henrfarias/CEP-Search"><img src="./assets/img/github-icon.svg" alt="Ícone do Github"></a>
       </footer>
     </div>
     <script src="./script.js"></script>

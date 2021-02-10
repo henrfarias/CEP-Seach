@@ -1,5 +1,14 @@
-function buscaCep(value) {
-  const cep = value;  
+function cepFocused () {
+  const inputCep = document.querySelector('.input-cep')
+  document.addEventListener('keypress', (event) => {
+    if(event.key === 'Enter') {
+      inputCep.blur();
+    }
+  })
+}
+
+function buscaCep() {
+  const cep = document.querySelector('.input-cep').value; 
   const pureCep = cep.replace(/[/ /\-/]/g, '');
 
   loading();
@@ -19,8 +28,12 @@ function buscaCep(value) {
       if (req.readyState === 4) {
         const json = JSON.parse(req.responseText);
         console.log(json);
-        pushCep(json)
-        spanNotDisplayed();
+        if(json.erro !== true) {
+          pushCep(json)
+          requestSuccesful();
+        } else {
+          spanDisplayed();
+        }
       } 
     }
   
@@ -35,18 +48,35 @@ function pushCep(object) {
 }
 
 function spanDisplayed() {
-  const spanInvalid = document.querySelector('.span-invalid');
   loading();
-  spanInvalid.classList.remove('invisible');
+  removeAddress();
+  document.querySelector('.span-invalid').classList.remove('invisible');
+  document.querySelector('.check-icon').classList.add('invisible');
+  document.querySelector('.input-cep').classList.remove('req-correct');
+  document.querySelector('.input-cep').classList.add('req-incorrect');
 }
 
-function spanNotDisplayed() {
-  const spanInvalid = document.querySelector('.span-invalid');
+function requestSuccesful() {
   loading();
-  spanInvalid.classList.add('invisible');
+  document.querySelector('.span-invalid').classList.add('invisible');
+  document.querySelector('.check-icon').classList.remove('invisible');
+  document.querySelector('.input-cep').classList.remove('req-incorrect');
+  document.querySelector('.input-cep').classList.add('req-correct');
 }
 
 function loading() {
-  const loadingCircle = document.querySelector('.loading');
-  return loadingCircle.classList.toggle('invisible');
+  document.querySelector('.input-cep').classList.remove('req-correct');
+  document.querySelector('.input-cep').classList.remove('req-incorrect');
+  document.querySelector('.check-icon').classList.add('invisible');
+  document.querySelector('.span-invalid').classList.add('invisible');
+  document.querySelector('.loading').classList.toggle('invisible');
+
 }
+
+function removeAddress() {
+  document.querySelector('.input-public-place').value = '';
+  document.querySelector('.input-neighborhood').value = '';
+  document.querySelector('.input-city').value = '';
+  document.querySelector('.input-state').value = '';
+}
+
