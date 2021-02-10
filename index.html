@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html>
+  <head lang="pt-BR">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca CEP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">  
+  </head>
+  
+  <body>
+    <div class="container">
+      <header>
+        <h1>Buscador de CEP</h1>
+      </header>
+      <main class="content">
+        <form class="content__form" action="">
+          <div class="div-cep">
+            <label class="label-cep"> CEP: <input class="input-cep" onblur="buscaCep(value)" type="text" placeholder="00000-000" /></label>
+              <svg class="loading invisible" height="30" width="30">
+                <circle cx="15" cy="15" r="10" stroke="black" stroke-width="3" fill="transparent" />
+              </svg>
+            <span class="span-invalid invisible">CEP Inválido</span>
+          </div>
+          <div class="div-public-place">
+            <label class="label-public-place"> Logradouro: <input class="input-public-place" type="text" readonly /></label>
+          </div>
+          <div class="div-neighborhood">
+            <label class="label-neighborhood"> Bairro: <input class="input-neighborhood" type="text" readonly /></label>
+          </div>
+          <div class="div-city">
+            <label class="label-city"> Cidade: <input class="input-city" type="text" readonly /></label>
+          </div>
+          <div class="div-state">
+            <label class="label-state"> Estado: <input class="input-state" type="text" readonly /></label>
+          </div>
+        </form>
+      </main>
+      <footer>
+        <p>Github: @henrfarias &copy; 2020.</p>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+

@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  background: #343434;
+
+  height: 100vh;
+}
+
+header {
+  width: 100%;
+  background: #D4D4D4;
+  padding: 1rem 0;
+}
+
+h1 {
+  color: #343434;
+  padding-left: 2rem;
+  font-size: 3rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  display: block;
+  height: 3.6rem;
+  width: 100%;
+  padding-left: 1rem
+}
+
+span {
+  color: red;
+  font-weight: 400;
+}
+
+footer {
+  background: #FEFEFE;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid #D4D4D4;
+  width: clamp(60rem, 60vw, 120rem);
+  height: clamp(40rem, 50vh, 100rem);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.content {
+  flex-grow: 1;
+  background: #FEFEFE;
+  position: relative;
+}
+
+.content__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.div-cep {
+  width: 100%;
+  padding: 4rem 1rem 2rem 1rem;
+}
+
+.div-public-place, .div-neighborhood {
+  width: 50%;
+  padding: 0 1rem 1rem;
+}
+
+.div-city {
+  width: 80%;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.div-state {
+  width: 20%;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.invisible {
+  display: none;
+}
+
+.loading {
+  position: absolute;
+  top: 5.6rem;
+  left: 95%;
+  stroke-dasharray: 2;
+  animation: loadingRotate linear 1s infinite;
+}
+
+@keyframes loadingRotate {
+  from {
+    transform: rotate(-360deg);
+  }
+}
+
