@@ -21,7 +21,7 @@ function buscaCep() {
   
   const req = new XMLHttpRequest();
 
-    req.open('GET', url, true);
+    req.open('GET', url);
 
     req.onreadystatechange = () => {
       
@@ -29,7 +29,7 @@ function buscaCep() {
         const json = JSON.parse(req.responseText);
         console.log(json);
         if(json.erro !== true) {
-          pushCep(json)
+          pushCep(json);
           requestSuccesful();
         } else {
           spanDisplayed();
