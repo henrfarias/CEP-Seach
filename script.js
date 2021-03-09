@@ -13,31 +13,22 @@ function buscaCep() {
 
   loading();
 
-  if(pureCep.length != 8 || pureCep.match(/[A-Za-z]/) !== null) {
+  if(pureCep.length != 8 || pureCep.match(/[A-Za-z]/g) !== null) {
     return spanDisplayed();
   }
   
   const url = `https://viacep.com.br/ws/${pureCep}/json/`
   
-  const req = new XMLHttpRequest();
-
-    req.open('GET', url);
-
-    req.onreadystatechange = () => {
-      
-      if (req.readyState === 4) {
-        const json = JSON.parse(req.responseText);
-        console.log(json);
-        if(json.erro !== true) {
-          pushCep(json);
-          requestSuccesful();
-        } else {
-          spanDisplayed();
-        }
-      } 
+  fetch(url)
+  .then(response => response.json())
+  .then(resolve => {
+    if(!resolve.erro) {
+      pushCep(resolve);
+      requestSuccesful();
+    } else {
+      spanDisplayed();
     }
-  
-  req.send()
+  })
 }
 
 function pushCep(object) {
@@ -79,4 +70,3 @@ function removeAddress() {
   document.querySelector('.input-city').value = '';
   document.querySelector('.input-state').value = '';
 }
-
